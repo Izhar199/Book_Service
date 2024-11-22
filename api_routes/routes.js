@@ -1,9 +1,10 @@
-import controllers from '../controllers/appController.js';
-import { bookControllers }  from '../controllers/bookController.js';
-const routes = (app) => {
-  app.route('/').get(controllers.default)
-  app.route('/welcome').get(controllers.about);
-  app.route('/books').get(bookControllers.getBooks);
-}
+const express = require('express');
+const router = express.Router();
+const bookController = require('../controllers/bookController');
 
-export default routes;
+// Routes
+router.get('/books', bookController.getAllBooks);
+router.delete('/books/:id', bookController.deleteBook);
+router.patch('/books/:id/status', bookController.updateBookStatus);
+
+module.exports = router;
