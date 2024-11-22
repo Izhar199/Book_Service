@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const bookController = require('../controllers/bookController').default;
+import { Router } from 'express';
+const router = Router();
+import bookController from '../controllers/bookController.mjs';
 
 // Routes
 router.get('/books', bookController.getAllBooks);
@@ -8,4 +8,4 @@ router.delete('/books/:id', bookController.deleteBook);
 router.post("/books/add", bookController.addBook);
 router.patch('/books/:id/status', bookController.updateBookStatus);
 
-module.exports = router;
+export default router;

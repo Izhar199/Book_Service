@@ -1,4 +1,4 @@
-import { getAllBooks as _getAllBooks, addBook as _addBook, deleteBook as _deleteBook, updateBookStatus as _updateBookStatus } from "../services/bookService";
+import { getAllBooks as _getAllBooks, addBook as _addBook, deleteBook as _deleteBook, updateBookStatus as _updateBookStatus } from "../services/bookService.mjs";
 
 const getAllBooks = async (req, res) => {
   try {

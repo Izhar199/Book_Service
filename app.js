@@ -1,13 +1,13 @@
 import express from 'express';
 import { connect } from 'mongoose';
-import { json } from 'body-parser';
-import bookRoutes from './api_routes/bookRoutes';
+import bodyParser from 'body-parser';
+import bookRoutes from './api_routes/bookRoutes.mjs';
 
 const app = express();
 const PORT = 3000;
 
 // Middleware
-app.use(json());
+app.use(bodyParser.json());
 
 // Routes
 app.use('/api', bookRoutes);

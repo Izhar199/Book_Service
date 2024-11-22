@@ -1,7 +1,7 @@
 
 import dbConnect from './dbConfig.js';
 import express from 'express';
-import routes from './api_routes/bookRoutes.js';
+import routes from './api_routes/bookRoutes.mjs';
 const app = express();
 
 app.use(express.json());
