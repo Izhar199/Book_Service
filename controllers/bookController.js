@@ -1,8 +1,8 @@
-const bookService = require("../services/bookService");
+import { getAllBooks as _getAllBooks, addBook as _addBook, deleteBook as _deleteBook, updateBookStatus as _updateBookStatus } from "../services/bookService";
 
 const getAllBooks = async (req, res) => {
   try {
-    const books = await bookService.getAllBooks();
+    const books = await _getAllBooks();
     res.status(200).json(books);
   } catch (error) {
     res.status(500).json({ message: "Error fetching books", error });
@@ -12,7 +12,7 @@ const getAllBooks = async (req, res) => {
 const addBook = async (req, res) => {
   try {
     const bookDetails = req.body;
-    const newBook = await bookService.addBook(bookDetails);
+    const newBook = await _addBook(bookDetails);
     res.status(201).json(newBook);
   } catch (error) {
     res.status(500).json({ message: "Error adding book", error });
@@ -22,7 +22,7 @@ const addBook = async (req, res) => {
 const deleteBook = async (req, res) => {
   try {
     const { id } = req.params;
-    const deletedBook = await bookService.deleteBook(id);
+    const deletedBook = await _deleteBook(id);
     if (!deletedBook) {
       return res.status(404).json({ message: "Book not found" });
     }
@@ -36,7 +36,7 @@ const updateBookStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { status } = req.body;
-    const updatedBook = await bookService.updateBookStatus(id, status);
+    const updatedBook = await _updateBookStatus(id, status);
     if (!updatedBook) {
       return res.status(404).json({ message: "Book not found" });
     }
@@ -46,7 +46,7 @@ const updateBookStatus = async (req, res) => {
   }
 };
 
-module.exports = {
+export default {
   getAllBooks,
   addBook,
   deleteBook,

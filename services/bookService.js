@@ -1,7 +1,7 @@
-const Book = require("../models/bookModel");
+import Book, { find, findByIdAndDelete, findByIdAndUpdate } from "../models/bookModel";
 
 const getAllBooks = async () => {
-  return await Book.find();
+  return await find();
 };
 
 const addBook = async (bookDetails) => {
@@ -10,14 +10,14 @@ const addBook = async (bookDetails) => {
 };
 
 const deleteBook = async (bookId) => {
-  return await Book.findByIdAndDelete(bookId);
+  return await findByIdAndDelete(bookId);
 };
 
 const updateBookStatus = async (bookId, status) => {
-  return await Book.findByIdAndUpdate(bookId, { status }, { new: true });
+  return await findByIdAndUpdate(bookId, { status }, { new: true });
 };
 
-module.exports = {
+export default {
   getAllBooks,
   addBook,
   deleteBook,
