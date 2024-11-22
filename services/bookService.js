@@ -1,19 +1,25 @@
-const Book = require('../models/bookModel');
+const Book = require("../models/bookModel");
 
 const getAllBooks = async () => {
-    return await Book.find();
+  return await Book.find();
 };
 
-const deleteBook = async (id) => {
-    return await Book.findByIdAndDelete(id);
+const addBook = async (bookDetails) => {
+  const newBook = new Book(bookDetails);
+  return await newBook.save();
 };
 
-const updateBookStatus = async (id, status) => {
-    return await Book.findByIdAndUpdate(id, { status }, { new: true });
+const deleteBook = async (bookId) => {
+  return await Book.findByIdAndDelete(bookId);
+};
+
+const updateBookStatus = async (bookId, status) => {
+  return await Book.findByIdAndUpdate(bookId, { status }, { new: true });
 };
 
 module.exports = {
-    getAllBooks,
-    deleteBook,
-    updateBookStatus,
+  getAllBooks,
+  addBook,
+  deleteBook,
+  updateBookStatus,
 };
