@@ -25,13 +25,13 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 
-app.get("/", function (req, res) {
+app.get("/books", function (req, res) {
     res.render("home", {
         data: books
     })
 })
 
-app.post("/", (req, res) => {
+app.post("/books/add", (req, res) => {
     const inputBookName = req.body.bookName
     const inputBookAuthor = req.body.bookAuthor
     const inputBookPages = req.body.bookPages
@@ -62,7 +62,7 @@ app.post('/issue', (req, res) => {
     })
 })
 
-app.post('/return', (req, res) => {
+app.post('/books/:id', (req, res) => {
     var requestedBookName = req.body.bookName;
     books.forEach(book => {
         if (book.bookName == requestedBookName) {
@@ -74,7 +74,7 @@ app.post('/return', (req, res) => {
     })
 })
 
-app.post('/delete', (req, res) => {
+app.delete('/books/:id', (req, res) => {
     var requestedBookName = req.body.bookName;
     var j = 0;
     books.forEach(book => {
