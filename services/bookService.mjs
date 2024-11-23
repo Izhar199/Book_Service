@@ -1,7 +1,7 @@
 import Book from "../models/bookModel.mjs";
 
 export const getAllBooks = async () => {
-  return await find();
+  return await Book.find();
 };
 
 export const addBook = async (bookDetails) => {
@@ -10,11 +10,11 @@ export const addBook = async (bookDetails) => {
 };
 
 export const deleteBook = async (bookId) => {
-  return await findByIdAndDelete(bookId);
+  return await Book.findOneAndDelete({bookId});
 };
 
 export const updateBookStatus = async (bookId, status) => {
-  return await findByIdAndUpdate(bookId, { status }, { new: true });
+  return await Book.findOneAndUpdate({bookId}, { status }, { new: true });
 };
 
 // export default {
