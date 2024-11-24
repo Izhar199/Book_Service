@@ -9,17 +9,11 @@ export const addBook = async (bookDetails) => {
   return await newBook.save();
 };
 
-export const deleteBook = async (bookId) => {
-  return await Book.findOneAndDelete({bookId});
+export const deleteBook = async (id) => {
+  return await Book.findOneAndDelete({id});
 };
 
-export const updateBookStatus = async (bookId, status) => {
-  return await Book.findOneAndUpdate({bookId}, { status }, { new: true });
+export const updateBookStatus = async (id, isAvailable) => {
+  return await Book.findOneAndUpdate({id}, { isAvailable },);
 };
 
-// export default {
-//   getAllBooks,
-//   addBook,
-//   deleteBook,
-//   updateBookStatus,
-// };

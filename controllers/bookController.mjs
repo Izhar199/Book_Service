@@ -35,8 +35,8 @@ const deleteBook = async (req, res) => {
 const updateBookStatus = async (req, res) => {
   try {
     const { id } = req.params;
-    const { status } = req.body;
-    const updatedBook = await _updateBookStatus(id, status);
+    const { isAvailable } = req.body;
+    const updatedBook = await _updateBookStatus(id, isAvailable);
     if (!updatedBook) {
       return res.status(404).json({ message: "Book not found" });
     }
